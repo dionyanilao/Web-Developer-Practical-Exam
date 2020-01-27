@@ -2,17 +2,16 @@
 <?php 
 require 'includes/conn.php'
  ?>
-
-
 <!DOCTYPE html>
 <html>
 <head>
 
-	<title></title>
+<title></title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-<img src="assets/images/paintjob.png">
-
+<img class ="paintjob" src="assets/images/paintjob.png">
+		
 <p>Paint Jobs in Progress</p><br>
 <table border="1" class="inProgress">
 	<thead>
@@ -26,13 +25,13 @@ require 'includes/conn.php'
 
 
 	<?php 
-		$sql = 'SELECT * from paints where action = "pending" LIMIT 5';
+		$sql = 'SELECT  * from paints where action = "pending" LIMIT 5';
 		$result = mysqli_query($conn, $sql);
 		$resultCheck = mysqli_num_rows($result);
 
 		if ($resultCheck > 0 ) {
 			while($rows = mysqli_fetch_assoc($result)){
-				echo "<tbody><tr><th>" . $rows['plate-no.'] . "</th><th>" .$rows['current']. "</th><th>" . $rows['target'] . "</th><th>" .'<a href="">Mark as Complete</a>' . "</th></tr></tbody>" ;
+				echo "<tbody><tr><th>" . $rows['plate-no.'] . "</th><th>" .$rows['current']. "</th><th>" . $rows['target'] . "</th><th>" .'<button class="done">Mark as Complete</button>' . "</th></tr></tbody>" ;
 			}
 		}
 	 ?>
@@ -65,5 +64,26 @@ Shop Performance
 
 
 <p>Paint Queue</p>
+<table border="1" class="inProgress">
+	<thead>
+    <tr>
+      <th scope="col">Plate No.</th>
+      <th scope="col">Current Color</th>
+      <th scope="col">Target Color</th>
+  
+    </tr>
+  </thead>
+  <?php 
+		$sql = 'SELECT  * from paints where action = "pending" LIMIT 1000000 OFFSET 5';
+		$result = mysqli_query($conn, $sql);
+		$resultCheck = mysqli_num_rows($result);
+
+		if ($resultCheck > 0 ) {
+			while($rows = mysqli_fetch_assoc($result)){
+				echo "<tbody><tr><th>" . $rows['plate-no.'] . "</th><th>" .$rows['current']. "</th><th>" . $rows['target'] . "</th></tr></tbody>" ;
+			}
+		}
+	 ?>
+  </table>
 </body>
 </html>
