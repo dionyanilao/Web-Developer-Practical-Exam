@@ -1,19 +1,14 @@
-
+	
 <?php 
-require 'includes/conn.php'
+require 'includes/conn.php';
+require 'header.php';
  ?>
-<!DOCTYPE html>
-<html>
-<head>
-
-<title></title>
-<link rel="stylesheet" type="text/css" href="css/style.css">
-</head>
-<body>
-<img class ="paintjob" src="assets/images/paintjob.png">
+ 
+<h2 class="header2">Paint Jobs</h2>
 		
-<p>Paint Jobs in Progress</p><br>
-<table border="1" class="inProgress">
+<h4 class="header5">Paint Jobs in Progress</h4><br>
+<form method="POST" class="in-progress">
+<table border="2" class="tblInProgress">
 	<thead>
     <tr>
       <th scope="col">Plate No.</th>
@@ -22,22 +17,41 @@ require 'includes/conn.php'
       <th scope="col">Action</th>
     </tr>
   </thead>
-
+ 	
 
 	<?php 
 		$sql = 'SELECT  * from paints where action = "pending" LIMIT 5';
 		$result = mysqli_query($conn, $sql);
 		$resultCheck = mysqli_num_rows($result);
+			
 
 		if ($resultCheck > 0 ) {
 			while($rows = mysqli_fetch_assoc($result)){
-				echo "<tbody><tr><th>" . $rows['plate-no.'] . "</th><th>" .$rows['current']. "</th><th>" . $rows['target'] . "</th><th>" .'<button class="done">Mark as Complete</button>' . "</th></tr></tbody>" ;
-			}
-		}
-	 ?>
-</table>
-Shop Performance
+				echo "<tbody><tr><th>" . $rows['plate'] . "</th><th>" .$rows['current']. "</th><th>" . $rows['target'] . "</th><th>" .'<a onclick = refresh() href=queue.php?id='.$rows['id']  .' class="done" name="done ">Mark as Complete</a>' . "</th></tr></tbody>" ;
 
+			}
+	
+
+			if (isset($_GET['id'])) {
+				$update= 'UPDATE `paints` SET `action`="done" WHERE id='.$_GET['id'];
+				mysqli_query($conn, $update);
+				$sql = 'SELECT  * from paints where action = "pending" LIMIT 5';
+				header('Location: queue.php?action=done');
+					
+			}	
+			
+
+		}
+
+	 ?>
+
+
+</table>
+</form>
+
+
+
+<div class="sp"><span class="spHeader">Shop Performance</span></div>
 
 <?php 
 	$totalcars = 'SELECT * from paints where action ="done"';
@@ -52,18 +66,20 @@ Shop Performance
 	$resultCheck4 = mysqli_num_rows($result4);
 	$result5=mysqli_query($conn,$green);
 	$resultCheck5 = mysqli_num_rows($result5);
-	echo '<div class ="breakdown"><p>Total Cars Painted:</p> '.$resultCheck2.
-		  '<p>Breakdown:</p>
-		  <p>Blue</p>'.$resultCheck3.
-		  '<p>Red</p>'.$resultCheck4.
-		  '<p>Green</p>'.$resultCheck5. '</div>';	
+
+	echo '<div class ="breakdown"><span>Total Cars Painted:<span><span class="result1 results">'.$resultCheck2.
+		  '</span><br> Breakdown:<br>
+		  <div class="breakdownColors">
+		  Blue<span class="result2 results">'. $resultCheck3.'</span><br>
+		  Red<span class="result3 results">'.$resultCheck4.'</span><br>
+		  Green<span class="result4 results">'.$resultCheck5. '</span></div></div>';	
 
 
  ?>
 
 
-
-<p>Paint Queue</p>
+<div class="pq">
+<h4 id="pq">Paint Queue</h4>
 <table border="1" class="inProgress">
 	<thead>
     <tr>
@@ -80,10 +96,13 @@ Shop Performance
 
 		if ($resultCheck > 0 ) {
 			while($rows = mysqli_fetch_assoc($result)){
-				echo "<tbody><tr><th>" . $rows['plate-no.'] . "</th><th>" .$rows['current']. "</th><th>" . $rows['target'] . "</th></tr></tbody>" ;
+				echo "<tbody><tr><th>" . $rows['plate'] . "</th><th>" .$rows['current']. "</th><th>" . $rows['target'] . "</th></tr></tbody>" ;
 			}
 		}
 	 ?>
   </table>
+  </div>
 </body>
 </html>
+
+<!-- UPDATE `paints` SET`action`="pending" WHERE 1 -->

@@ -1,17 +1,8 @@
 
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<title></title>
-</head>
-<body>
-
+<?php require 'header.php' ?>
 	
 
-
-
-<img src="assets/images/newpaintjob.png"><br>
+<h2 class="header2">New Paint Job</h2>
 
 <script type="text/javascript">
 
@@ -60,30 +51,51 @@
 
 
 
-<img src="assets/images/cardetails.png">
- 
 
-<form method="POST" action="includes/submit.php">
+ <h4 class="header3">Car Details</h4>
+
+
+
+
+<form class="cardetails" method="POST" action="includes/submit.php">
  <label for="plate-number">Plate No.</label>
- <input type="text" name="plate-number" id="plate-number"><br>
+ <input type="text" name="plate-number" class="cd-input" id="plate-number"><br>
 <label for="c-color">Current color</label>
-<select id="c-color" name="c-color" class="c-color" onchange="getCurrent(this)">
+<select id="c-color" name="c-color" class="c-color cd-input" onchange="getCurrent(this)">
 	<option></option>
 	<option value="red">Red</option>
 	<option value="green">Green</option>
 	<option value="blue">Blue</option>
 </select><br>
 <label for="t-color">Target color</label>
-<select id="t-color" name="t-color" onchange="getTarget(this)">
+<select id="t-color" name="t-color" class="cd-input"  onchange="getTarget(this)">
 	<option></option>
 	<option value="red">Red</option>
 	<option value="green">Green</option>
 	<option value="blue">Blue</option>
 </select><br>
-<button type="submit" name="submit">Submit</button>
+<button type="submit" class="submit-cd" name="submit">Submit</button>
 </form>
 
+<?php 
 
+if (isset($_GET['error'])) {
+	# code...
+
+	$error = $_GET['error'];
+	if ($error == 'empty') {
+		echo "<small>Please fill out the necessary fields.</small>";
+	}
+	else if ($error == "invalidformat") {
+		echo "<small>Wrong Format</small>";
+	}
+	
+
+}
+
+	
+
+ ?>
 
 
 </body>

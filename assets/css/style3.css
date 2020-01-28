@@ -1,0 +1,197 @@
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+
+body {
+  -ms-overflow-style: none;
+}
+
+.done{
+	color: red;
+	border: none;
+    background-color: inherit;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+}
+.header-container{
+	background-color: #EEEEEE;
+	height:150px; 
+	opacity:1;
+	width: 70%;
+	margin: auto;
+	padding-top: 10px;
+	margin-top: 30px;
+}
+.header{
+	color: #656565;
+	font-size: 38px;
+	text-align: center;
+	margin-top: 35px;
+
+}
+.nav-container{
+	background-color: #EA6A5B;
+	width: 945px;
+	margin: auto;
+	height: 25px;
+
+
+
+}
+
+.nav{
+	margin-left: 10px;
+	padding: 10px;
+	margin-top: 5px;
+	color: white;
+	padding-bottom: 4px;
+    display: inline;
+
+
+}
+a{
+	text-decoration: none;
+}
+.nav:hover ,  .nav:active  {
+	border-bottom: solid 2px #000;
+	color: black;
+}
+
+h2{
+	text-align: center;
+}
+#image-container{
+	text-align: center;
+}
+#image1{
+	margin-right: 200px;
+}
+#arrow{
+	position: absolute;
+	right: 640px;
+	top: 340px;
+}
+.header3{
+	margin-left: 210px;
+}
+.cardetails{
+	margin-left: 210px;
+}
+.submit-cd{
+	background-color: #EA6A5B;
+	width: 120px;
+	height: 30px;
+	color: white;
+	border:none;
+	margin-top: 13px;
+}
+.cd-input{
+	width: 200px;
+	margin-top: 10px;
+}
+#plate-number{
+	margin-left: 50px;
+	width: 195px;
+}
+#c-color{
+	margin-left: 23px;
+}
+#t-color{
+	margin-left:32px;
+}
+
+
+
+.tblInProgress{
+	width: 700px;
+	margin-left: 210px;
+	float: left;	
+	height: 100px;
+
+}
+
+
+th{
+	height: 20px;
+}
+tr{
+	height: 20px;
+}
+.breakdown{
+	background-color: #EEEEEE;
+	width: 180px;
+	float: left;
+	line-height: 1.3;
+	height: 120px;
+	margin-left: 30px;
+	font-size: 14px;
+	padding: 10px;
+	padding-top: 10px;
+
+
+
+}
+.sp{
+	background-color: #EA6A5B;
+	overflow: auto;
+	width: 200px;
+	height: 40px;	
+	margin-left: 940px;
+
+	color: white;
+}
+.spHeader{
+	position: absolute;
+	left: 970px;
+	top: 345px;
+}
+.result1{
+	margin-left: 50px;
+}
+.result2{
+	margin-left: 122px;
+}
+.result3{
+	margin-left: 126px;
+}
+.result4{
+	margin-left: 114px;
+}
+
+.header5{
+	margin-left: 220px;
+}
+
+tbody{
+	text-align: center;
+	height: 10px;
+}
+thead{
+	background-color: #EEEEEE;
+}
+.breakdownColors{
+	margin-left: 8px;
+}
+.pq{
+	width: 700px;
+	margin-left: 210px;
+	float: left;	
+	height: 100px;
+
+}
+
+.inProgress{
+	width: 700px;
+}
+#pq{
+	margin-left: 10px;
+}
+small{
+	margin-left: 200px;
+	color: red;
+}
